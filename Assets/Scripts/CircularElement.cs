@@ -2,32 +2,47 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class CircularElement : MonoBehaviour {
 
-    private MeshFilter mesh;
-
+    private MeshFilter mesh; /*!<  */
+    public float circularRadius = 0.5f; /*!< Raio do circulo (Padrão 0.5f) */
+    [Range(0,360)]
+    public float angleSize = 360f; /*!< Angulo do mesh a ser gerado */
     public int numOfPoints;
+
 
     private void Awake()
     {
         mesh = GetComponent<MeshFilter>();
+        MeshConfig();
     }
 
     // Use this for initialization
     void Start () {
         mesh.mesh = MakeCircle(numOfPoints);
 	}
-	
 
+    private void MeshConfig(){
+        CircleCollider2D circle = GetComponent<CircleCollider2D>();
+        circle.radius = circularRadius;
+        circle.isTrigger = true;
+    }
+	
+    /*!
+      Gera um mesh circular
+        \param numOfPoints numero inteiro de pontos para gerar os vertices.
+        \return Mesh com os vertices e triangulos criados. 
+    */
     public Mesh MakeCircle(int numOfPoints)
     {
-        float angleStep = 360.0f / (float)numOfPoints;
+        float angleStep = angleSize / (float)numOfPoints;
         List<Vector3> vertexList = new List<Vector3>();
         List<int> triangleList = new List<int>();
         Quaternion quaternion = Quaternion.Euler(0.0f, 0.0f, angleStep);
         // Make first triangle.
         vertexList.Add(new Vector3(0.0f, 0.0f, 0.0f));  // 1. Circle center.
-        vertexList.Add(new Vector3(0.0f, 0.5f, 0.0f));  // 2. First vertex on circle outline (radius = 0.5f)
+        vertexList.Add(new Vector3(0.0f, circularRadius, 0.0f));  // 2. First vertex on circle outline (radius = 0.5f)
         vertexList.Add(quaternion * vertexList[1]);     // 3. First vertex on circle outline rotated by angle)
                                                         // Add triangle indices.
         triangleList.Add(0);

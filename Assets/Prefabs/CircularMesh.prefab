@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33686052670764712}
   - component: {fileID: 23502232076017162}
   - component: {fileID: 114758776453185846}
+  - component: {fileID: 58419766271003160}
   m_Layer: 0
   m_Name: CircularMesh
   m_TagString: Untagged
@@ -81,6 +82,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1134532760797928}
   m_Mesh: {fileID: 0}
+--- !u!58 &58419766271003160
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1134532760797928}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!114 &114758776453185846
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -92,4 +108,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41e166eb212da91428a2edd2bafc3304, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numOfPoints: 24
+  circularRadius: 0.5
+  angleSize: 360
+  numOfPoints: 23
