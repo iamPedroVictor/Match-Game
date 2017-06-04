@@ -11,7 +11,7 @@ public class Grid : MonoBehaviour {
     public CircularElement circleRef;
     [HideInInspector]
     public List<CircularElement> gridElements;
-
+    [Tooltip("Minimum distance is a half of radius circle")]
     public float minDistance; /*!< Distancia de um elemento a outro na grid */
     /*!
       Metodo para a limpeza da lista de posições
@@ -69,4 +69,5 @@ public class Grid : MonoBehaviour {
         GenerateGrid(xSize, ySize);
         StartCoroutine("GenerateElements");
     }
+
 }
