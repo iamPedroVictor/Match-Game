@@ -59,9 +59,14 @@ public class Grid : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        CleanGrid();
-        GenerateGrid(xSize,ySize);
-        StartCoroutine("GenerateElements");
-	}
+        Generate();
 
+    }
+
+    public void Generate()
+    {
+        CleanGrid();
+        GenerateGrid(xSize, ySize);
+        StartCoroutine("GenerateElements");
+    }
 }
