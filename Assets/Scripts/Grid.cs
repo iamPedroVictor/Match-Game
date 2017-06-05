@@ -52,7 +52,9 @@ public class Grid : MonoBehaviour {
             
             CircularElement element = Instantiate(circleRef, gridPositions[i], Quaternion.Euler(0,180,0)) as CircularElement;
             gridElements.Add(element);
+            element.name = "Element " + gridPositions[i];
             element.transform.SetParent(this.transform);
+            //element.SetMaterial();
             yield return new WaitForSeconds(0.1f);
         }
     }

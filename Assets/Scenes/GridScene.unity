@@ -260,6 +260,59 @@ MonoBehaviour:
   _tutoBox: {fileID: 1121959764}
   _tutoInfo: {fileID: 986800780}
   _loading: {fileID: 598341974}
+--- !u!1 &595317372
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 595317374}
+  - component: {fileID: 595317373}
+  - component: {fileID: 595317375}
+  m_Layer: 0
+  m_Name: Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &595317373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 595317372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e05e407ff5cba94486d0c40ad410273, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &595317374
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 595317372}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.079762, y: 0.8110566, z: -20}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &595317375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 595317372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b28a9535a39ea7a4788a90da910aa68d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  touchObjects: []
 --- !u!212 &598341974 stripped
 SpriteRenderer:
   m_PrefabParentObject: {fileID: 212051392075672126, guid: d0797caaeaaf1884f83823d07fc5ebea,

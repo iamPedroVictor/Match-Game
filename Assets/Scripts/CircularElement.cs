@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,22 +12,25 @@ public class CircularElement : MonoBehaviour {
     public float angleSize = 360f; /*!< Angulo do mesh a ser gerado */
     public int numOfPoints;
 
+    public Shader myShader;
 
     private void Awake()
     {
         mesh = GetComponent<MeshFilter>();
-        MeshConfig();
+        
     }
 
     // Use this for initialization
     void Start () {
         mesh.mesh = MakeCircle(numOfPoints);
-	}
+        MeshConfig();
+    }
 
     private void MeshConfig(){
         CircleCollider2D circle = GetComponent<CircleCollider2D>();
         circle.radius = circularRadius;
         circle.isTrigger = true;
+        mesh.mesh.RecalculateNormals();
     }
 	
     /*!
@@ -62,4 +66,9 @@ public class CircularElement : MonoBehaviour {
         return _mesh;
     }
 
+    public void SetMaterial(Material material)
+    {
+        Renderer rend = GetComponent<Renderer>();
+        rend.material = material;
+    }
 }

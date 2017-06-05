@@ -111,3 +111,4 @@ MonoBehaviour:
   circularRadius: 0.5
   angleSize: 360
   numOfPoints: 23
+  myShader: {fileID: 4800000, guid: a9489145ee84c6445a12485306d9f77b, type: 3}
