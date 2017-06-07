@@ -27,7 +27,7 @@ public class CommandButton : MonoBehaviour
         {
             //We should have hit something with a 2D Physics collider!
             Transform touchedObject = hitInformation.transform;
-            Debug.Log("Touched " + touchedObject.name + " Position: " + touchedObject.localPosition);
+            GameManager.Instance.LoadObject(touchedObject);
         }
     }
 
