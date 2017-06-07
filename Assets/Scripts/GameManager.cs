@@ -21,11 +21,15 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    public float timeTakenDuringLerp = 1f;
+    private bool canSwap;
+
     // Use this for initialization
     private void Awake()
     {
         touchObjects = new List<Transform>();
         touchObjects.Clear();
+        canSwap = true;
     }
 
     public void LoadObject(Transform touchObject)
@@ -41,11 +45,9 @@ public class GameManager : MonoBehaviour {
         
     }
 
-    public float timeTakenDuringLerp = 1f;
-
     private IEnumerator AnimationTransform(Transform agent, Vector3 des, Vector3 midDistance){
         float time = 0;
-        print("O destino eh>>>" + des);
+        canSwap = false;
         while(agent.position != des && time < timeTakenDuringLerp){
             time += Time.deltaTime;
             agent.RotateAround(midDistance, Vector3.forward, 180 / (timeTakenDuringLerp/Time.deltaTime));
@@ -56,24 +58,26 @@ public class GameManager : MonoBehaviour {
             }
             yield return 0;
         }
-        print("Esta em >>>" + agent.position);
-        while (Vector3.Distance(agent.position, des) > Mathf.Epsilon)
+        while (Vector3.Distance(agent.localPosition, des) > Mathf.Epsilon)
         {
-            print("Esta longe da posicao final");
-            agent.position = des;
+            agent.localPosition = des;
             yield return 0;
         }
-        print("Esta em >>>" + agent.position);
+
+        canSwap = true;
 
     }
 
     private void SwapObjects(Transform transform1, Transform transform2)
     {
+        if (!canSwap) return;
 
         Vector3 midDistance = Vector3.Lerp(transform1.position, transform2.position, .5f);
 
-        StartCoroutine(AnimationTransform(transform1, transform2.position, midDistance));
+        StartCoroutine(AnimationTransform(transform1, transform2.localPosition, midDistance));
 
-        StartCoroutine(AnimationTransform(transform2, transform1.position, midDistance));
+        StartCoroutine(AnimationTransform(transform2, transform1.localPosition, midDistance));
     }
+
+
 }

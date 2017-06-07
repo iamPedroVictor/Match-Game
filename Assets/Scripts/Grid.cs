@@ -6,12 +6,29 @@ public class Grid : MonoBehaviour {
 
     public int xSize, ySize;  /*!< Limita o tamanho da grid */
 
+
     private List<Vector2> gridPositions = new List<Vector2>();  /*!< Armazena as posições geradas para a grid */
 
     public CircularElement circleRef;
-    [HideInInspector]
-    public List<CircularElement> gridElements;
-    [Tooltip("Minimum distance is a half of radius circle")]
+    //[HideInInspector]
+    //public List<CircularElement> gridElements;
+
+    private Dictionary<CircularElement, Vector2> gridElements = new Dictionary<CircularElement, Vector2>();
+
+    private static Grid _instance;
+
+    public static Grid Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<Grid>();
+            }
+            return _instance;
+        }
+    }
+
     public float minDistance; /*!< Distancia de um elemento a outro na grid */
     /*!
       Metodo para a limpeza da lista de posições
@@ -46,15 +63,18 @@ public class Grid : MonoBehaviour {
     */
     public IEnumerator GenerateElements()
     {
-        gridElements = new List<CircularElement>();
+       // gridElements = new List<CircularElement>();
         for(int i = 0; i < gridPositions.Count; i++)
         {
             
             CircularElement element = Instantiate(circleRef, gridPositions[i], Quaternion.Euler(0,180,0)) as CircularElement;
-            gridElements.Add(element);
+            gridElements.Add(element, gridPositions[i]);
             element.name = "Element " + gridPositions[i];
             element.transform.SetParent(this.transform);
             //element.SetMaterial();
+            foreach(Vector2 v in gridElements.Values){
+                print("Valores" + v);
+            }
             yield return new WaitForSeconds(0.1f);
         }
     }

@@ -66,6 +66,11 @@ public class CircularElement : MonoBehaviour {
         return _mesh;
     }
 
+    /*!
+      Gera um mesh circular
+        \param material Material para ser aplicado ao objeto.
+    */
+
     public void SetMaterial(Material material)
     {
         Renderer rend = GetComponent<Renderer>();
