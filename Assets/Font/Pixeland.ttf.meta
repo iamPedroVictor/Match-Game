@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 12006b3f92eb2b0499c2db812650c211
+timeCreated: 1497859688
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Pixeland
+  fontNames:
+  - Pixeland
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

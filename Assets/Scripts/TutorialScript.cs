@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class TutorialScript : MonoBehaviour
 {
 
+    public GameObject _TutorialHUD;
+    public GameObject _GameHUD;
+
     // _TUTORIAL has all the states of the In Game Tutorial
     // the are call via swith in Update() with _tutorial var
     public enum _TUTORIAL
@@ -66,10 +69,14 @@ public class TutorialScript : MonoBehaviour
     // here is displayed all the info for TUTORIAL.WELCOME
     void Start()
     {
+        _TutorialHUD.SetActive(true);
+        _GameHUD.SetActive(false);
+
         _tutorial = _TUTORIAL.WELCOME;
         _loading.gameObject.SetActive(true);
         ChangeText(0);
         _tutoInt = 0;
+        Time.timeScale = 0;
 
         if (Input.GetMouseButton(0))
         {
@@ -133,7 +140,11 @@ public class TutorialScript : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            gameObject.SetActive(false);
+            Time.timeScale = 1;
+
+            _TutorialHUD.SetActive(false);
+            _GameHUD.SetActive(true);
+            //gameObject.SetActive(false);
         }
     }
 }
