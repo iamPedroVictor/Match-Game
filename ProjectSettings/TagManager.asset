@@ -44,6 +44,9 @@ TagManager:
   - name: Char
     uniqueID: 3730494223
     locked: 0
+  - name: Plt
+    uniqueID: 3765277443
+    locked: 0
   - name: HUD
     uniqueID: 2851877855
     locked: 0
