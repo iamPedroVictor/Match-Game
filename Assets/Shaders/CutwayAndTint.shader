@@ -44,14 +44,14 @@
 
 		 float4 frag(vertexOutput input) : COLOR  {
 
-			 float4 textureColor = tex2D(_MainTex, input.tex.xy);  
+			float4 textureColor = tex2D(_MainTex, input.tex.xy);  
 
-			 if (textureColor.a < _Cutoff)
-			 {
+			if (textureColor.a < _Cutoff)
+			{
 				  discard;
-			 }
+			}
 
-			 float4 final =	tex2D(_MainTex, input.tex.xy);
+			float4 final =	tex2D(_MainTex, input.tex.xy);
 
             return final * _Color;
          }

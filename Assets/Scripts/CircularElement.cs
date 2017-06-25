@@ -4,12 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class CircularElement : MonoBehaviour {
+public class CircularElement : MonoBehaviour
+{
 
     private MeshFilter mesh; /*!<  */
-    public float circularRadius = 0.5f; /*!< Raio do circulo (Padrão 0.5f) */
-    [Range(0,360)]
-    public float angleSize = 360f; /*!< Angulo do mesh a ser gerado */
+    /*!< Raio do circulo (Padrão 0.5f) */
+    public float circularRadius = 0.5f;
+    [Range(0, 360)]
+    /*!< Angulo do mesh a ser gerado */
+    public float angleSize = 360f;
     public int numOfPoints;
 
     public Shader myShader;
@@ -17,26 +20,28 @@ public class CircularElement : MonoBehaviour {
     private void Awake()
     {
         mesh = GetComponent<MeshFilter>();
-        
+
     }
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         mesh.mesh = MakeCircle(numOfPoints);
         MeshConfig();
     }
 
-    private void MeshConfig(){
+    private void MeshConfig()
+    {
         CircleCollider2D circle = GetComponent<CircleCollider2D>();
         circle.radius = circularRadius;
         circle.isTrigger = true;
         mesh.mesh.RecalculateNormals();
     }
-	
-    /*!
-      Gera um mesh circular
-        \param numOfPoints numero inteiro de pontos para gerar os vertices.
-        \return Mesh com os vertices e triangulos criados. 
+
+    /*
+      Generates a circular mesh
+        \param numOfPoints Number of points to generate the vertices.
+        \return Mesh with vertices and triangles created.
     */
     public Mesh MakeCircle(int numOfPoints)
     {
@@ -52,6 +57,7 @@ public class CircularElement : MonoBehaviour {
         triangleList.Add(0);
         triangleList.Add(1);
         triangleList.Add(2);
+
         for (int i = 0; i < numOfPoints - 1; i++)
         {
             triangleList.Add(0);                      // Index of circle center.
@@ -59,6 +65,7 @@ public class CircularElement : MonoBehaviour {
             triangleList.Add(vertexList.Count);
             vertexList.Add(quaternion * vertexList[vertexList.Count - 1]);
         }
+
         Mesh _mesh = new Mesh();
         _mesh.name = "Circular";
         _mesh.vertices = vertexList.ToArray();
@@ -66,9 +73,9 @@ public class CircularElement : MonoBehaviour {
         return _mesh;
     }
 
-    /*!
-      Gera um mesh circular
-        \param material Material para ser aplicado ao objeto.
+    /*
+      Create a circular mesh
+      param material Material para ser aplicado ao objeto.
     */
 
     public void SetMaterial(Material material)

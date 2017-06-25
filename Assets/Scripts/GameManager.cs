@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
 
     public List<Transform> touchObjects;
 
@@ -37,20 +38,22 @@ public class GameManager : MonoBehaviour {
         if (touchObjects.Contains(touchObject)) return;
 
         touchObjects.Add(touchObject);
-        if(touchObjects.Count == 2)
+        if (touchObjects.Count == 2)
         {
             SwapObjects(touchObjects[0], touchObjects[1]);
             touchObjects.Clear();
         }
-        
+
     }
 
-    private IEnumerator AnimationTransform(Transform agent, Vector3 des, Vector3 midDistance){
+    private IEnumerator AnimationTransform(Transform agent, Vector3 des, Vector3 midDistance)
+    {
         float time = 0;
         canSwap = false;
-        while(agent.position != des && time < timeTakenDuringLerp){
+        while (agent.position != des && time < timeTakenDuringLerp)
+        {
             time += Time.deltaTime;
-            agent.RotateAround(midDistance, Vector3.forward, 180 / (timeTakenDuringLerp/Time.deltaTime));
+            agent.RotateAround(midDistance, Vector3.forward, 180 / (timeTakenDuringLerp / Time.deltaTime));
             if (time >= 1)
             {
                 time = 1;

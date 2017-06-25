@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ColorPallete : MonoBehaviour {
+public class ColorPallete : MonoBehaviour
+{
 
-    
+
 
 }
 

@@ -21,7 +21,8 @@ public class CommandButton : MonoBehaviour
         }
     }
 
-    public void ButtonCommand(Vector2 PosWorld2D) {
+    public void ButtonCommand(Vector2 PosWorld2D)
+    {
         RaycastHit2D hitInformation = Physics2D.Raycast(PosWorld2D, Camera.main.transform.forward);
         if (hitInformation.collider != null)
         {

@@ -144,7 +144,6 @@ public class TutorialScript : MonoBehaviour
 
             _TutorialHUD.SetActive(false);
             _GameHUD.SetActive(true);
-            //gameObject.SetActive(false);
         }
     }
 }
